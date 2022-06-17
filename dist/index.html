@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>Home</title>
+    <link href="./style.css" rel="stylesheet"/>
+    <script defer src="./script.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.18.3/dist/tsparticles.min.js"></script>
+<div id="sidebar" x-data="{menu: false}">
+    <div class="z-30 fixed h-12 w-12 bg-white bg-opacity-25 rounded-full m-3 items-center justify-center">
+        <!--        <img alt="Menü" class="hover:cursor-pointer" src="./imgs/menu-bar.png" x-on:click="menu=true">-->
+        <span class="iconify object-contain h-full w-full hover:cursor-pointer" data-icon="ic:round-menu"
+              x-on:click="menu=true"></span>
+    </div>
+    <div>
+        <div class="fixed z-50 h-full bg-white" x-show="menu"
+             x-transition:enter="transition ease-in-out duration-300"
+             x-transition:enter-end="opacity-100 transform scale-x-100 translate-x-0"
+             x-transition:enter-start="opacity-0 transform scale-x-0 -translate-x-1/2"
+             x-transition:leave="transition ease-in-out duration-300"
+             x-transition:leave-end="opacity-0 transform scale-x-0 -translate-x-1/2"
+             x-transition:leave-start="opacity-100 transform scale-x-100 translate-x-0">
+            <div class="z-50 h-12 w-12 m-3">
+                <!--                <img alt="Close Menü" class="hover:cursor-pointer" src="./imgs/menu-closed.png" x-on:click="menu=false">-->
+                <span class="iconify object-contain h-full w-full hover:cursor-pointer" data-icon="ic:round-close"
+                      x-on:click="menu=false"></span>
+            </div>
+            <ul class="text-center overflow-scroll list-none text-3xl m-2 font-bold">
+                <li>
+                    <button x-on:click="
+                    menu=false;
+                    document.getElementById('tsparticles').scrollIntoView({behavior: 'smooth',block: 'start'});
+                    var i = 0;
+                    var txt = 'Carl B\xF6hm-Sturm';
+                    var speed = 100;
+                    document.getElementById('typewriter').innerHTML = '';
+                    function typeWriter() {
+                    if (i < txt.length) {
+                    document.getElementById('typewriter').innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                    }
+                    }
+
+                    typeWriter();">
+                        <h1>Start</h1>
+                    </button>
+                </li>
+                <li>
+                    <button x-on:click="menu=false; document.getElementById('profile').scrollIntoView({behavior: 'smooth',block: 'start'});">
+                        <h1>Profil</h1>
+                    </button>
+                </li>
+                <li>
+                    <button x-on:click="menu=false; document.getElementById('kontakt').scrollIntoView({behavior: 'smooth',block: 'start'});">
+                        <h1>Kontakt</h1>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="fixed z-30 h-full w-full bg-black bg-opacity-25 right-0" x-on:click="menu=false"
+             x-show="menu"
+             x-transition:enter="transition duration-300 delay-300"
+             x-transition:enter-end="opacity-100"
+             x-transition:enter-start="opacity-0"
+             x-transition:leave="transition duration-300"
+             x-transition:leave-end="opacity-0"
+             x-transition:leave-start="opacity-100"></div>
+    </div>
+</div>
+<div class="bg-blue-400 w-full h-screen -z-50" id="tsparticles">
+    <p class="absolute h-full flex w-full justify-center items-center text-center h-screen text-black text-4xl"
+       id="typewriter"
+    ></p>
+    <span class="iconify absolute right-1/2 bottom-3 w-12 h-12" data-icon="ic:round-keyboard-arrow-down"></span>
+</div>
+<div class="pl-2 pr-2 md:pl-40 md:pr-40" id="profile" x-data="{show_life: false}">
+    <div class="h-20"></div>
+    <div class="flex">
+        <div class="w-16 md:w-32 lg:w-48"></div>
+        <h1 class="text-4xl pl-7">Profil</h1>
+    </div>
+    <div class="h-10"></div>
+    <div class="flex">
+        <img alt="Profil-Bild" class="left-0 object-contain w-16 md:w-32 lg:w-48" id="profile-pic" src="./imgs/img.png">
+        <div class="right-0 w-4"></div>
+        <div>
+            <p class="right-0 text-lg w-full pl-7" id="profile_text">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+    </div>
+    <div class="flex mt-7">
+        <div class="w-30 md:w-50 lg:w-60 h-full"></div>
+        <div class="rounded-3xl md:ml-7 right-0 w-full"
+             x-bind:class="show_life ? 'bg-gray-cool':''">
+            <button class="flex justify-center items-center space-x-2 bg-gray-cool rounded-3xl w-full text-2xl outline-none"
+                    x-on:click="show_life=!show_life">
+                <span class="font-source-code-pro">Lebenslauf</span>
+                <div class="h-9 w-9">
+                    <span class="iconify h-full w-full object-contain" data-icon="ic:baseline-add"
+                          x-show="!show_life"></span>
+                    <span class="iconify h-full w-full object-contain" data-icon="ic:baseline-minus"
+                          x-show="show_life"></span>
+                </div>
+            </button>
+            <div class="m-4 bg-gray-cool" x-show="show_life" x-transition>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pl-2 pr-2 md:pl-40 md:pr-40" id="kontakt">
+    <div class="h-20"></div>
+    <h1 class="text-4xl">Kontakt</h1>
+    <div class="h-10"></div>
+    <div class="grid">
+        <p class="text-lg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <div class="w-11 h-11"></div>
+        <ul>
+            <li class="flex items-center">
+                <span class="iconify object-contain w-10 h-10 mr-1" data-icon="ic:baseline-phone-android"></span>
+                <p class="text-lg underline">+49 1511 1234567</p>
+            </li>
+            <li class="flex items-center w-full">
+                <span class="iconify object-contain w-10 h-10 mr-1" data-icon="ic:baseline-email"></span>
+                <a class="text-lg font-source-code-pro underline" href="mailto:carl.boehm-sturm@outlook.de">
+                    carl.boehm-sturm@outlook.de
+                </a>
+            </li>
+            <li class="flex items-center w-full">
+                <span class="iconify object-contain w-10 h-10 mr-1" data-icon="brandico:twitter-bird"></span>
+                <a class="text-lg font-source-code-pro underline" href="https://twitter.com/BohmSturm">
+                    twitter.com/BohmSturm
+                </a>
+            </li>
+            <li class="flex items-center w-full">
+                <span class="iconify object-contain w-10 h-10 mr-1" data-icon="brandico:instagram-filled"></span>
+                <a class="text-lg font-source-code-pro underline" href="https://instagram.com/c_rl17">
+                    instagram.com/c_rl17
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="pl-2 pr-2 md:pl-40 md:pr-40 bg-gray-100" id="impressum">
+    <div class="h-10"></div>
+    <h1>Impressum</h1>
+    <table class="table-row-group text-center">
+        <tr>
+            <th>Angaben gem&auml;&szlig; &sect; 5 TMG</th>
+            <th>Kontakt</th>
+            <th>Quelle</th>
+        </tr>
+        <tr>
+            <td>Carl B&ouml;hm-Sturm</td>
+            <td>Telefon: 4915738081456</td>
+            <td><a href="https://www.e-recht24.de">https://www.e-recht24.de</a></td>
+        </tr>
+        <tr>
+            <td>Weg&auml;cker, 24</td>
+            <td>E-Mail: carl.boehm-sturm@outlook.de</td>
+        </tr>
+        <tr>
+            <td>86925 Leeder</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
