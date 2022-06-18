@@ -14,9 +14,12 @@
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.18.3/dist/tsparticles.min.js"></script>
 <div id="sidebar" x-data="{menu: false}">
     <div class="z-30 fixed h-12 w-12 bg-white bg-opacity-25 rounded-full m-3 items-center justify-center">
-        <!--        <img alt="Menü" class="hover:cursor-pointer" src="./imgs/menu-bar.png" x-on:click="menu=true">-->
         <span class="iconify object-contain h-full w-full hover:cursor-pointer" data-icon="ic:round-menu"
               x-on:click="menu=true"></span>
+    </div>
+    <div class="fixed right-0 m-4 bg-white bg-opacity-25 rounded-full hover:cursor-pointer"
+         x-on:click="window.location.href='./auth/login.html'">
+        <h1 class="m-1">Login</h1>
     </div>
     <div>
         <div class="fixed z-50 h-full bg-white" x-show="menu"
@@ -27,7 +30,6 @@
              x-transition:leave-end="opacity-0 transform scale-x-0 -translate-x-1/2"
              x-transition:leave-start="opacity-100 transform scale-x-100 translate-x-0">
             <div class="z-50 h-12 w-12 m-3">
-                <!--                <img alt="Close Menü" class="hover:cursor-pointer" src="./imgs/menu-closed.png" x-on:click="menu=false">-->
                 <span class="iconify object-contain h-full w-full hover:cursor-pointer" data-icon="ic:round-close"
                       x-on:click="menu=false"></span>
             </div>
